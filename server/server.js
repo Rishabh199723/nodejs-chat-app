@@ -25,14 +25,19 @@ io.on('connection',(socket)=>       //this is an event listener
   // socket.on('createEmail', (newEmail) => {    //listener for the client from index.js
   //   console.log('createEmail', newEmail);
   // });
-  socket.emit('newMessage', {
-    from: 'Abhay',
-    text: 'See you then',
-    createdAt: 123123
-  });
+  // socket.emit('newMessage', {
+  //   from: 'Abhay',
+  //   text: 'See you then',      not needed now
+  //   createdAt: 123123
+  // });
 
   socket.on('createMessage', (message)=> {
     console.log('createMessage', message);
+    io.emit('newMessage', {
+      from: message.from,
+      text: message.text,
+      createdAt: new Date().getTime()
+
   });
 
 
@@ -41,7 +46,7 @@ io.on('connection',(socket)=>       //this is an event listener
     console.log('User Disconnected from server');
   });
 });
-
+});
 server.listen(port, () => {
   console.log(`Server is up on ${port}`);
 });
