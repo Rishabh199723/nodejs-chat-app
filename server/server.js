@@ -42,7 +42,7 @@ io.on('connection',(socket)=>       //this is an event listener
 
 
     io.emit('newMessage', generateMessage(message.from,message.text));
-    callback('This is from server');
+    callback();
   // socket.broadcast.emit('newMessage', {
   //     from: message.from,
   //     text: message.text,
