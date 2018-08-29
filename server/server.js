@@ -10,7 +10,7 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
 
-app.use(express.static(publicPath));
+app.use(express.static(publicPath));  // to load html file
 
 io.on('connection',(socket)=>       //this is an event listener
 {
